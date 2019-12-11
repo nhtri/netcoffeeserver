@@ -102,7 +102,7 @@ app.get('/admin', function (req, res) {
     console.log(req);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    pool.query('select * from admin', function (error, results, fields) {
+    pool.query('select username,password from admin', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });

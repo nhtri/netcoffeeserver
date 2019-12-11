@@ -54,7 +54,7 @@ app.get('/wifi', function (req, res) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     pool.query('select * from wifi', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        res.end(JSON.stringify(results.rows));
     });
 });
 
@@ -64,7 +64,7 @@ app.get('/wifi/old', function (req, res) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     pool.query('select `MaWiFi`, `SDTSim`, `MaSim`, `NgayThue`, `NgayTra`, `ThangDongCuoc`, `GiaCuoc`, `Facebook`, `TrangThai`, `DiaChi`, `Hoten`, `ghichu` from wifi where `TrangThai`=0', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        res.end(JSON.stringify(results.rows));
     });
 });
 
@@ -72,7 +72,7 @@ app.get('/wifi/old', function (req, res) {
 app.get('/wifi/:MaWiFi', function (req, res) {
     pool.query('SELECT * FROM `wifi` WHERE `MaWiFi`=?', [req.params.MaWiFi], function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        res.end(JSON.stringify(results.rows));
     });
 });
 
@@ -84,7 +84,7 @@ app.post('/wifi/', function (req, res) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     pool.query('INSERT INTO `wifi` SET ?', postData, function (error, results, fields) {
 	  if (error) throw error;
-	  res.end(JSON.stringify(results));
+	  res.end(JSON.stringify(results.rows));
 	});
 });
 
@@ -93,7 +93,7 @@ app.post('/wifi/', function (req, res) {
 app.put('/wifi/', function (req, res) {
     pool.query('UPDATE `wifi` SET `SDTSim`=?,`NgayThue`=?,`NgayTra`=?,`GiaCuoc`=? where `MaWiFi`=?', [req.body.SDTSim,req.body.NgayThue,req.body.NgayTra,req.body.GiaCuoc,req.body.MaWiFi], function (error, results, fields) {
        if (error) throw error;
-       res.end(JSON.stringify(results));
+       res.end(JSON.stringify(results.rows));
      });
  });
 
@@ -104,7 +104,7 @@ app.get('/admin', function (req, res) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     pool.query('select username,password from admin', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        res.end(JSON.stringify(results.rows));
     });
 });
 

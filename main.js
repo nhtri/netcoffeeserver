@@ -36,14 +36,18 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 //Create node.js Server
-var server = app.listen(3000, "127.0.0.1", function () {
+// var server = app.listen(3000, "127.0.0.1", function () {
 
-    var host = server.address().address
-    var port = server.address().port
+//     var host = server.address().address
+//     var port = server.address().port
 
-    console.log("Example app listening at http://%s:%s", host, port)
+//     console.log("Example app listening at http://%s:%s", host, port)
 
-});
+// });
+
+var server = app.listen(3000|| 3002, () => {
+    console.log(`Server listening`)
+  })
 
 //rest api to get all results
 app.get('/wifi', function (req, res) {

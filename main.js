@@ -45,9 +45,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 // });
 
-var server = app.listen(3002, () => {
-    console.log('Server listening')
-  })
+var server = app.listen(process.env.PORT || 5000)
 
 //rest api to get all results
 app.get('/wifi', function (req, res) {

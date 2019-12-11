@@ -45,8 +45,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 // });
 
-var server = app.listen(3000|| 3002, () => {
-    console.log(`Server listening`)
+var server = app.listen(3002, () => {
+    console.log('Server listening')
   })
 
 //rest api to get all results

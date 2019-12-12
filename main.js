@@ -64,8 +64,11 @@ app.get('/wifi', function (req, res) {
 app.get('/wifi/old', function (req, res) {
     console.log(req);
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    pool.query('select `MaWiFi`, `SDTSim`, `MaSim`, `NgayThue`, `NgayTra`, `ThangDongCuoc`, `GiaCuoc`, `Facebook`, `TrangThai`, `DiaChi`, `Hoten`, `ghichu` from wifi where `TrangThai`=0', function (error, results, fields) {
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
+    pool.query('select * from wifi where `TrangThai`=0', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });
@@ -83,8 +86,10 @@ app.get('/wifi/:MaWiFi', function (req, res) {
 app.post('/wifi/', function (req, res) {
     var postData = req.body;
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
     pool.query('INSERT INTO `wifi` SET ?', postData, function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
@@ -94,6 +99,11 @@ app.post('/wifi/', function (req, res) {
 
 //rest api to update record into mysql database
 app.put('/wifi/', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
     pool.query('UPDATE `wifi` SET `SDTSim`=?,`NgayThue`=?,`NgayTra`=?,`GiaCuoc`=? where `MaWiFi`=?', [req.body.SDTSim, req.body.NgayThue, req.body.NgayTra, req.body.GiaCuoc, req.body.MaWiFi], function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
@@ -104,7 +114,10 @@ app.put('/wifi/', function (req, res) {
 app.get('/admin', function (req, res) {
     console.log(req);
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
     pool.query('select username,password from admin', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));

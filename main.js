@@ -104,7 +104,7 @@ app.put('/wifi/', function (req, res) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
-    pool.query('UPDATE wifi SET SDTSim=?,NgayThue=?,NgayTra=?,GiaCuoc=? where MaWiFi=?', [req.body.SDTSim, req.body.NgayThue, req.body.NgayTra, req.body.GiaCuoc, req.body.MaWiFi], function (error, results, fields) {
+    pool.query('UPDATE wifi SET ngaythue=($1),ngaytra=($2),thangdongcuoc=($3),giacuoc=($4),facebook=($5),trangthai=($6),diachi=($7),hoten=($8),ghichu=($9) where mawifi=($10)', [req.body.SDTSim, req.body.NgayThue, req.body.NgayTra, req.body.GiaCuoc, req.body.MaWiFi], function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });

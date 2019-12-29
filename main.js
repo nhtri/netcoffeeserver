@@ -96,7 +96,7 @@ app.post('/wifi/', function (req, res) {
     });
 });
 
-//rest api to delete a record into mysql database
+//rest api to delete a record in mysql database
 app.delete('/wifi/', function (req, res) {
     var postData = req.body;
     res.header("Access-Control-Allow-Origin", "*");

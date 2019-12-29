@@ -75,12 +75,12 @@ app.get('/wifi/old', function (req, res) {
 });
 
 //rest api to get a single employee data
-app.get('/wifi/:MaWiFi', function (req, res) {
-    pool.query('SELECT * FROM `wifi` WHERE `MaWiFi`=?', [req.params.MaWiFi], function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results.rows));
-    });
-});
+//app.get('/wifi/:MaWiFi', function (req, res) {
+//    pool.query('SELECT * FROM `wifi` WHERE `MaWiFi`=?', [req.params.MaWiFi], function (error, results, fields) {
+//        if (error) throw error;
+//        res.end(JSON.stringify(results.rows));
+//    });
+//});
 
 //rest api to create a new record into mysql database
 app.post('/wifi/', function (req, res) {

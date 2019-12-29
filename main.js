@@ -98,7 +98,7 @@ app.post('/wifi/', function (req, res) {
 
 //rest api to delete a record in mysql database
 app.delete('/wifi/:id', function (req, res) {
-    const id = parseInt(request.params.id)
+    var id = request.params.id
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", true);
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');

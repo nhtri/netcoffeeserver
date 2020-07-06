@@ -61,6 +61,20 @@ app.get('/wifi', function (req, res) {
     });
 });
 
+//rest api to get all results congtacvien
+app.get('/congtacvien', function (req, res) {
+    console.log(req);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
+    pool.query('select * from congtacvien', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results.rows));
+    });
+});
+
 //rest api to get all account results
 app.get('/account', function (req, res) {
     console.log(req);
@@ -110,6 +124,21 @@ app.post('/wifi/', function (req, res) {
     });
 });
 
+
+//rest api to create a new record into mysql database
+app.post('/congtacvien/', function (req, res) {
+    var postData = req.body;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
+    pool.query('INSERT INTO congtacvien VALUES ($1, $2, $3, $4)', postData, function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results.rows));
+    });
+});
+
 //rest api to create a new account record into mysql database
 app.post('/account/', function (req, res) {
     var postData = req.body;
@@ -132,6 +161,19 @@ app.delete('/wifi/:mawifi', function (req, res) {
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
     pool.query('DELETE FROM wifi WHERE mawifi = $1', [req.params.mawifi], function (error, results) {
+        if (error) throw error;
+        res.end(JSON.stringify(results.rows));
+    });
+});
+
+//rest api to delete congtacvien a record in mysql database
+app.delete('/wifi/:congtacvien', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
+    pool.query('DELETE FROM congtacvien WHERE hoten = $1', [req.params.hoten], function (error, results) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });

@@ -173,7 +173,7 @@ app.delete('/congtacvien/:congtacvien', function (req, res) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
-    pool.query('DELETE FROM congtacvien WHERE sdt = $1', [req.params.sdt], function (error, results) {
+    pool.query('DELETE FROM congtacvien WHERE sdt = '$1'', [req.params.sdt], function (error, results) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });

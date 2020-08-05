@@ -167,13 +167,13 @@ app.delete('/wifi/:mawifi', function (req, res) {
 });
 
 //rest api to delete congtacvien a record in mysql database
-app.delete('/congtacvien/:congtacvien', function (req, res) {
+app.delete('/congtacvien/:hoten', function (req, res) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", true);
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
-    pool.query('DELETE FROM congtacvien WHERE sdt = $1', [req.params.sdt], function (error, results) {
+    pool.query('DELETE FROM congtacvien WHERE hoten = $1', [req.params.hoten], function (error, results) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });

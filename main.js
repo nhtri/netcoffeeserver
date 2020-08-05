@@ -118,7 +118,7 @@ app.post('/wifi/', function (req, res) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
-    pool.query('INSERT INTO wifi VALUES ($1, $2, $3, $4, $5,$6, $7, $8, $9, $10, $11, $12,$13,$14,$15)', postData, function (error, results, fields) {
+    pool.query('INSERT INTO wifi VALUES ($1, $2, $3, $4, $5,$6, $7, $8, $9, $10, $11, $12,$13,$14,$15,$16)', postData, function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });
@@ -147,7 +147,7 @@ app.post('/account/', function (req, res) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
-    pool.query('INSERT INTO account VALUES ($1, $2, $3, $4, $5,$6, $7, $8, $9, $10, $11, $12,$13,$14,$15)', postData, function (error, results, fields) {
+    pool.query('INSERT INTO account VALUES ($1, $2, $3, $4, $5,$6, $7, $8, $9, $10, $11, $12,$13,$14,$15,$16)', postData, function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });
@@ -188,7 +188,7 @@ app.put('/wifi/', function (req, res) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
-    pool.query('UPDATE wifi SET ngaythue=($1),ngaytra=($2),thangdongcuoc=($3),giacuoc=($4),facebook=($5),trangthai=($6),diachi=($7),hoten=($8),ghichu=($9),sdtsim=($10),masim=($11),trangthai_kh=($12),namdongcuoc=($13),thanhtoan=($14) where mawifi=($15)', postData, function (error, results, fields) {
+    pool.query('UPDATE wifi SET congtacvien=($1),ngaythue=($2),ngaytra=($3),thangdongcuoc=($4),giacuoc=($5),facebook=($6),trangthai=($7),diachi=($8),hoten=($9),ghichu=($10),sdtsim=($11),masim=($12),trangthai_kh=($13),namdongcuoc=($14),thanhtoan=($15) where mawifi=($16)', postData, function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });

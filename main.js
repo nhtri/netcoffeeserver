@@ -195,6 +195,20 @@ app.put('/wifi/', function (req, res) {
 });
 
 //rest api to update record into mysql database
+app.put('/wificongtacvien/', function (req, res) {
+    var postData = req.body;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
+    pool.query('UPDATE wifi SET congtacvien=($1) where mawifi=($2)', postData, function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results.rows));
+    });
+});
+
+//rest api to update record into mysql database
 app.put('/account/', function (req, res) {
     var postData = req.body;
     res.header("Access-Control-Allow-Origin", "*");

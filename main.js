@@ -207,6 +207,20 @@ app.put('/wificongtacvien/', function (req, res) {
         res.end(JSON.stringify(results.rows));
     });
 });
+
+app.put('/wifitamngung/', function (req, res) {
+    var postData = req.body;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
+    pool.query('UPDATE wifi SET trangthai_kh='tamngung' where mawifi=($1)', postData, function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results.rows));
+    });
+});
+
 //rest api to update record into mysql database
 app.put('/wifithanhtoan/', function (req, res) {
     var postData = req.body;

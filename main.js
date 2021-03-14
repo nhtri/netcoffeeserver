@@ -264,13 +264,13 @@ app.put('/congtacvien/', function (req, res) {
 });
 
 //rest api to authen
-app.get('/admin', function (req, res) {
+app.get('/admin', function (req, res, next) {
     console.log(req);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", true);
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-
+	next();
     pool.query('select username,password from admin', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));

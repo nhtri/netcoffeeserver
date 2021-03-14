@@ -48,7 +48,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 var server = app.listen(process.env.PORT || 5000)
 
 //rest api to get all results
-app.get('/wifi', function (req, res) {
+app.get('/wifi', function (req, res, next) {
     console.log(req);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", true);
@@ -264,7 +264,7 @@ app.put('/congtacvien/', function (req, res) {
 });
 
 //rest api to authen
-app.get('/admin', function (req, res) {
+app.get('/admin', function (req, res, next) {
     console.log(req);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", true);

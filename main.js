@@ -17,8 +17,9 @@ const { Pool } = require('pg')
 
 var connectionString =
 //     'postgres://shoizafidgsclk:5aa84844e16bc84b3b49e67a16e339957d289abafdcdf3ad3f48d1c2b4b2cccf@ec2-174-129-255-35.compute-1.amazonaws.com:5432/d7fu349nrp13qh'
-'postgres://hgifejryvnugab:ff7c6caa3f3ee7acc4c959b36cae3b309b72452a7a22ba79f1ea4ce546107354@ec2-3-217-163-189.compute-1.amazonaws.com:5432/d9lk2n1h59hft9'
-app.use(cors());
+// 'postgres://hgifejryvnugab:ff7c6caa3f3ee7acc4c959b36cae3b309b72452a7a22ba79f1ea4ce546107354@ec2-3-217-163-189.compute-1.amazonaws.com:5432/d9lk2n1h59hft9'
+'postgres://stibksqbsriyvk:3166cb4522113b28ccd40453ccfe7462172439ff9afff85e6e51cd6a62246686@ec2-107-23-76-12.compute-1.amazonaws.com:5432/d6cosqel42umeq'
+    app.use(cors());
 
 
 //app.use(function(req, res, next) {
